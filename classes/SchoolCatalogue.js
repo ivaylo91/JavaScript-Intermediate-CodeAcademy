@@ -44,8 +44,8 @@ class School {
 }
 
 class PrimarySchool extends School {
-    constructor(name, numberOfStudents, pickupPolicy) {
-        super(name, numberOfStudents);
+    constructor(name,level, numberOfStudents, pickupPolicy) {
+        super(name, "primary", numberOfStudents);
         this._pickupPolicy = pickupPolicy;
     }
 
@@ -55,9 +55,12 @@ class PrimarySchool extends School {
 }
 
 class HighSchool extends School {
-    constructor(name, sportsTeams) {
-        super(name);
+    constructor(name, numberOfStudents, level, sportsTeams) {
+        super(name, "high", numberOfStudents);
         this._sportsTeam = sportsTeams;
+    }
+    get sportsTeams(){
+        return this._sportsTeam;
     }
 }
 
@@ -65,3 +68,6 @@ let primarySchool = new PrimarySchool('Lorraine Hansbury', 514, 'Students must b
     'guardian, or a family member over the age of 13');
 primarySchool.quickFacts();
 School.pickSubstituteTeacher(['Jamal Crawford', 'Lou Williams', 'J. R. Smith', 'James Harden', 'Jason Terry', 'Manu Ginobli']);
+
+let highSchool = new HighSchool('Al E. Smith', 415, ['Baseball', 'Basketball', 'Volleyball', 'Track and Field']);
+highSchool.sportsTeams;
