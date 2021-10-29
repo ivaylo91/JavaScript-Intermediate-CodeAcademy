@@ -16,7 +16,16 @@ const shortenUrl = () => {
         body:data,
         headers:{'Content-type': 'application/json',
         'apikey': apiKey }
-    })
+    }).then(response => {
+        if(response.ok){
+            return response.json();
+        }
+        throw new Error('Request failed!')
+    },networkError => console.log(networkError.message)).then(
+        jsonResponse=>{
+            renderRespose(jsonResponse)
+        }
+    );
 }
 
 // Clear page and call AJAX functions
